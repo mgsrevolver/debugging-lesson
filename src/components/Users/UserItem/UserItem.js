@@ -2,7 +2,7 @@ import React from 'react'
 
 import './UserItem.css'
 
-const CourseGoalItem = (props) => {
+const UserItem = (props) => {
   const deleteHandler = () => {
     props.onDelete(props.id)
   }
@@ -14,4 +14,4 @@ const CourseGoalItem = (props) => {
   )
 }
 
-export default CourseGoalItem
+export default UserItem

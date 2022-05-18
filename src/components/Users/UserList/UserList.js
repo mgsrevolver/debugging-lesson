@@ -3,7 +3,7 @@ import React from 'react'
 import CourseGoalItem from '../UserItem/UserItem'
 import './UserList.css'
 
-const CourseGoalList = (props) => {
+const UserList = (props) => {
   return (
     <ul className="goal-list">
       {props.items.map((goal) => (
@@ -19,4 +19,4 @@ const CourseGoalList = (props) => {
   )
 }
 
-export default CourseGoalList
+export default UserList

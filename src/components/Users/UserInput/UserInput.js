@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import Button from '../../UI/Button/Button'
 import styles from './UserInput.module.css'
 
-const CourseInput = (props) => {
+const UserInput = (props) => {
   const [enteredValue, setEnteredValue] = useState('')
   const [isValid, setIsValid] = useState(true)
 
-  const goalInputChangeHandler = (event) => {
+  const userInputChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setIsValid(true)
     }
@@ -28,12 +28,13 @@ const CourseInput = (props) => {
       <div
         className={`${styles['form-control']} ${!isValid && styles.invalid}`}
       >
-        <label>Course Goal</label>
-        <input type="text" onChange={goalInputChangeHandler} />
+        <label>Username</label>
+        <input type="text" name="username" onChange={userInputChangeHandler} />
+        <input type="int" name="age" onChange={userInputChangeHandler} />
       </div>
-      <Button type="submit">Add Goal</Button>
+      <Button type="submit">Add User</Button>
     </form>
   )
 }
 
-export default CourseInput
+export default UserInput
