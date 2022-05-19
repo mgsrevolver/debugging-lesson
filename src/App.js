@@ -5,40 +5,44 @@ import UserInput from './components/Users/UserInput/UserInput'
 import './App.css'
 
 const App = () => {
-  const [courseGoals, setCourseGoals] = useState([
+  const [Users, setUsers] = useState([
     { text: 'Max', age: 31, id: 'g1' },
     { text: 'Jamie', age: 24, id: 'g2' },
   ])
 
-  const addGoalHandler = (enteredText) => {
-    setCourseGoals((prevGoals) => {
-      const updatedGoals = [...prevGoals]
-      updatedGoals.unshift({ text: enteredText, id: Math.random().toString() })
-      return updatedGoals
+  const addUserHandler = (enteredText, enteredAge) => {
+    setUsers((prevUsers) => {
+      const updatedUsers = [...prevUsers]
+      updatedUsers.unshift({
+        text: enteredText,
+        age: enteredAge,
+        id: Math.random().toString(),
+      })
+      return updatedUsers
     })
   }
 
-  const deleteItemHandler = (goalId) => {
-    setCourseGoals((prevGoals) => {
-      const updatedGoals = prevGoals.filter((goal) => goal.id !== goalId)
-      return updatedGoals
+  const deleteItemHandler = (userId) => {
+    setUsers((prevUsers) => {
+      const updatedUsers = prevUsers.filter((user) => user.id !== userId)
+      return updatedUsers
     })
   }
 
   let content = (
-    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+    <p style={{ textAlign: 'center' }}>No users found. Maybe add one?</p>
   )
 
-  if (courseGoals.length > 0) {
-    content = <UserList items={courseGoals} onDeleteItem={deleteItemHandler} />
+  if (Users.length > 0) {
+    content = <UserList items={Users} onDeleteItem={deleteItemHandler} />
   }
 
   return (
     <div>
-      <section id="goal-form">
-        <UserInput onAddGoal={addGoalHandler} />
+      <section id="user-form">
+        <UserInput onAddGoal={addUserHandler} />
       </section>
-      <section id="goals">{content}</section>
+      <section id="users">{content}</section>
     </div>
   )
 }
