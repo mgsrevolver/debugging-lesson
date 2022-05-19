@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div>
       <section id="user-form">
-        <UserInput onAddGoal={addUserHandler} />
+        <UserInput onAddUser={addUserHandler} />
       </section>
       <section id="users">{content}</section>
     </div>

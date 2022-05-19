@@ -28,8 +28,7 @@ const UserInput = (props) => {
       setIsValid(false)
       return
     }
-    props.onAddGoal(enteredName)
-    props.onAddGoal(enteredAge)
+    props.onAddUser(enteredName, enteredAge)
   }
 
   return (
