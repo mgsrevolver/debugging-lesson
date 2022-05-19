@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
-import CourseGoalList from './components/Users/UserList/UserList'
-import CourseInput from './components/Users/UserInput/UserInput'
+import UserList from './components/Users/UserList/UserList'
+import UserInput from './components/Users/UserInput/UserInput'
 import './App.css'
 
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
-    { text: 'Do all exercises!', id: 'g1' },
-    { text: 'Finish the course!', id: 'g2' },
+    { text: 'Max', age: 31, id: 'g1' },
+    { text: 'Jamie', age: 24, id: 'g2' },
   ])
 
   const addGoalHandler = (enteredText) => {
@@ -30,15 +30,13 @@ const App = () => {
   )
 
   if (courseGoals.length > 0) {
-    content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
-    )
+    content = <UserList items={courseGoals} onDeleteItem={deleteItemHandler} />
   }
 
   return (
     <div>
       <section id="goal-form">
-        <CourseInput onAddGoal={addGoalHandler} />
+        <UserInput onAddGoal={addGoalHandler} />
       </section>
       <section id="goals">{content}</section>
     </div>

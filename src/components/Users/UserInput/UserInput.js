@@ -4,23 +4,32 @@ import Button from '../../UI/Button/Button'
 import styles from './UserInput.module.css'
 
 const UserInput = (props) => {
-  const [enteredValue, setEnteredValue] = useState('')
+  const [enteredName, setEnteredName] = useState('')
+  const [enteredAge, setEnteredAge] = useState('')
   const [isValid, setIsValid] = useState(true)
 
-  const userInputChangeHandler = (event) => {
+  const nameInputChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setIsValid(true)
     }
-    setEnteredValue(event.target.value)
+    setEnteredName(event.target.value)
+  }
+
+  const ageInputChangeHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsValid(true)
+    }
+    setEnteredAge(event.target.value)
   }
 
   const formSubmitHandler = (event) => {
     event.preventDefault()
-    if (enteredValue.trim().length === 0) {
+    if (enteredName.trim().length === 0) {
       setIsValid(false)
       return
     }
-    props.onAddGoal(enteredValue)
+    props.onAddGoal(enteredName)
+    props.onAddGoal(enteredAge)
   }
 
   return (
@@ -29,8 +38,8 @@ const UserInput = (props) => {
         className={`${styles['form-control']} ${!isValid && styles.invalid}`}
       >
         <label>Username</label>
-        <input type="text" name="username" onChange={userInputChangeHandler} />
-        <input type="int" name="age" onChange={userInputChangeHandler} />
+        <input type="text" name="username" onChange={nameInputChangeHandler} />
+        <input type="int" name="age" onChange={ageInputChangeHandler} />
       </div>
       <Button type="submit">Add User</Button>
     </form>
