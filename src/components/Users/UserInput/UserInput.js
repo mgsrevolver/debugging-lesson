@@ -24,6 +24,10 @@ const UserInput = (props) => {
     setEnteredAge(event.target.value)
   }
 
+  const errorHandler = () => {
+    setError(null)
+  }
+
   const formSubmitHandler = (event) => {
     event.preventDefault()
     if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
@@ -46,7 +50,13 @@ const UserInput = (props) => {
 
   return (
     <div>
-      {error && <ErrorModal title={error.title} message={error.message} />}
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       <form onSubmit={formSubmitHandler}>
         <div
           className={`${styles['form-control']} ${!isValid && styles.invalid}`}
