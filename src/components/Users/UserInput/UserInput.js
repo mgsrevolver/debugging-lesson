@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Button from '../../UI/Button/Button'
-// import ErrorModal from '../../UI/Modal/ErrorModal'
+import ErrorModal from '../../UI/Modal/ErrorModal'
 import styles from './UserInput.module.css'
 
 const UserInput = (props) => {
@@ -33,29 +33,32 @@ const UserInput = (props) => {
   }
 
   return (
-    <form onSubmit={formSubmitHandler}>
-      <div
-        className={`${styles['form-control']} ${!isValid && styles.invalid}`}
-      >
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          onChange={nameInputChangeHandler}
-        />
-      </div>
-      <div
-        className={`${styles['form-control']} ${!isValid && styles.invalid}`}
-      >
-        <input
-          type="int"
-          name="age"
-          placeholder="Age (Years)"
-          onChange={ageInputChangeHandler}
-        />
-      </div>
-      <Button type="submit">Add User</Button>
-    </form>
+    <div>
+      <ErrorModal title="An error occured" message="something wrong" />
+      <form onSubmit={formSubmitHandler}>
+        <div
+          className={`${styles['form-control']} ${!isValid && styles.invalid}`}
+        >
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            onChange={nameInputChangeHandler}
+          />
+        </div>
+        <div
+          className={`${styles['form-control']} ${!isValid && styles.invalid}`}
+        >
+          <input
+            type="int"
+            name="age"
+            placeholder="Age (Years)"
+            onChange={ageInputChangeHandler}
+          />
+        </div>
+        <Button type="submit">Add User</Button>
+      </form>
+    </div>
   )
 }
 

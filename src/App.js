@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import ErrorModal from './components/UI/Modal/ErrorModal'
 import UserList from './components/Users/UserList/UserList'
 import UserInput from './components/Users/UserInput/UserInput'
 import './App.css'
