@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import Button from '../../UI/Button/Button'
+import ErrorModal from '../../UI/Modal/ErrorModal'
 import styles from './UserInput.module.css'
 
 const UserInput = (props) => {
@@ -24,9 +25,9 @@ const UserInput = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault()
-    if (enteredName.trim().length === 0) {
+    if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       setIsValid(false)
-      return
+      return <ErrorModal />
     }
     props.onAddUser(enteredName, enteredAge)
   }
@@ -36,9 +37,22 @@ const UserInput = (props) => {
       <div
         className={`${styles['form-control']} ${!isValid && styles.invalid}`}
       >
-        <label>Username</label>
-        <input type="text" name="username" onChange={nameInputChangeHandler} />
-        <input type="int" name="age" onChange={ageInputChangeHandler} />
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          onChange={nameInputChangeHandler}
+        />
+      </div>
+      <div
+        className={`${styles['form-control']} ${!isValid && styles.invalid}`}
+      >
+        <input
+          type="int"
+          name="age"
+          placeholder="Age (Years)"
+          onChange={ageInputChangeHandler}
+        />
       </div>
       <Button type="submit">Add User</Button>
     </form>
