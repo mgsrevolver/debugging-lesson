@@ -8,6 +8,7 @@ const UserInput = (props) => {
   const [enteredName, setEnteredName] = useState('')
   const [enteredAge, setEnteredAge] = useState('')
   const [isValid, setIsValid] = useState(true)
+  const [error, setError] = useState()
 
   const nameInputChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
@@ -27,6 +28,17 @@ const UserInput = (props) => {
     event.preventDefault()
     if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       setIsValid(false)
+      setError({
+        title: 'Invalid input',
+        message: 'Please enter a valid name and age',
+      })
+      return
+    }
+    if (+enteredAge < 1) {
+      setError({
+        title: 'Invalid age',
+        message: 'Please enter a valid age over zero',
+      })
       return
     }
     props.onAddUser(enteredName, enteredAge)
@@ -34,7 +46,7 @@ const UserInput = (props) => {
 
   return (
     <div>
-      <ErrorModal title="An error occured" message="something wrong" />
+      {error && <ErrorModal title={error.title} message={error.message} />}
       <form onSubmit={formSubmitHandler}>
         <div
           className={`${styles['form-control']} ${!isValid && styles.invalid}`}
