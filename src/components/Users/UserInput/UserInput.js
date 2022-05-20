@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Button from '../../UI/Button/Button'
-import ErrorModal from '../../UI/Modal/ErrorModal'
+// import ErrorModal from '../../UI/Modal/ErrorModal'
 import styles from './UserInput.module.css'
 
 const UserInput = (props) => {
@@ -27,7 +27,7 @@ const UserInput = (props) => {
     event.preventDefault()
     if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       setIsValid(false)
-      return <ErrorModal />
+      return
     }
     props.onAddUser(enteredName, enteredAge)
   }
